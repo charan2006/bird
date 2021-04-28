@@ -65,6 +65,11 @@ function setup() {
 function draw() {
     background("black")
     
+    if(touches.lenght > 0 && gamestate === 1){
+        bird.velocityY = -7;
+        wing.play();
+        touches = [];
+    }
     bird.collide(inv);
     rand = Math.round(random(1, 5));
     if (rand === 1) {
@@ -118,8 +123,9 @@ function draw() {
    
     
     if(mousePressedOver(reset)|| touches.length>0){
+        touches = [];
         reste1();
-         touches = [];
+         
     }
     drawSprites();
     if(gameState === 1){
